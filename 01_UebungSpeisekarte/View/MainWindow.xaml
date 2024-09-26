@@ -1,0 +1,31 @@
+﻿<Window x:Class="_01_UebungSpeisekarte.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:_01_UebungSpeisekarte"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Grid DataContext="{StaticResource mvmodel}">
+        <Label Content="Speisekarte" HorizontalAlignment="Left" Margin="44,34,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <DatePicker Name="dpSort" HorizontalAlignment="Left" Margin="44,60,0,0" VerticalAlignment="Top"/>
+        <Button Name="btnAnz" Content="Anzeigen" HorizontalAlignment="Left" Margin="187,60,0,0" VerticalAlignment="Top" Width="127" Height="24" Click="btnAnz_Click"/>
+        <DataGrid Name="datagrid" ItemsSource="{Binding LstGerichtNachDatum}" SelectedItem="{Binding SelGericht}" Margin="44,97,486,50" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Datum" Binding="{Binding Datum, StringFormat='dd.MM.yyyy'}" />
+                <DataGridTextColumn Header="Gericht" Binding="{Binding Essen}" />
+                <DataGridTextColumn Header="Preis" Binding="{Binding Preis}" />
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Datum:" HorizontalAlignment="Left" Margin="400,97,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Gericht:" HorizontalAlignment="Left" Margin="400,128,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <Label Content="Preis:" HorizontalAlignment="Left" Margin="400,159,0,0" VerticalAlignment="Top" FontWeight="Bold"/>
+        <DatePicker Name="dpAnlegen" HorizontalAlignment="Left" Margin="481,99,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="tbGericht" HorizontalAlignment="Left" Margin="485,132,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <TextBox Name="tbPreis" HorizontalAlignment="Left" Margin="485,163,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" PreviewTextInput="tbPreis_PreviewTextInput"/>
+        <Button Name="btnSpeichern" Content="Speichern" HorizontalAlignment="Left" Margin="481,217,0,0" VerticalAlignment="Top" Height="24" Width="124" Click="btnSpeichern_Click"/>
+        <Button Name="btnReset" Content="Selektion zurücksetzen" HorizontalAlignment="Left" Margin="481,257,0,0" VerticalAlignment="Top" Height="24" Width="124" Click="btnReset_Click"/>
+        <Button Name="btnLoeschen" Content="Selektion Gericht löschen" HorizontalAlignment="Left" Margin="481,286,0,0" VerticalAlignment="Top" Height="24" Width="124" Click="btnLoeschen_Click"/>
+
+    </Grid>
+</Window>
